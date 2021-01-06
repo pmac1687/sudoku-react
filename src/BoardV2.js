@@ -11,12 +11,13 @@ function BoardV2(props) {
   // eslint-disable-next-line no-unused-vars
   const [dark, setDark] = useState(false);
   useEffect(() => {
-    const { darken } = props.darkMode;
-    console.log(darken);
-    if (darken) {
-      const box = document.getElementsByName("box");
-      const boxes = document.getElementsByName("box");
-      const gridItem = document.getElementsByClassName("grid-item");
+    const dMode = props.darkMode;
+    console.log(props.darkMode);
+    const box = document.getElementsByName("box");
+    const boxes = document.getElementsByName("boxes");
+    const gridItem = document.getElementsByClassName("grid-item");
+    console.log(gridItem);
+    if (dMode) {
       for (let x = 0; x < boxes.length; x++) {
         console.log(boxes[x].style.backgroundColor);
         boxes[x].style.backgroundColor = "black";
@@ -28,11 +29,7 @@ function BoardV2(props) {
         gridItem[x].style.backgroundColor = "black";
         gridItem[x].style.borderColor = "white";
       }
-    }
-    if (darken) {
-      const box = document.getElementsByName("box");
-      const boxes = document.getElementsByName("box");
-      const gridItem = document.getElementsByClassName("grid-item");
+    } else {
       for (let x = 0; x < boxes.length; x++) {
         console.log(boxes[x].style.backgroundColor);
         boxes[x].style.backgroundColor = "white";
@@ -45,7 +42,8 @@ function BoardV2(props) {
         gridItem[x].style.borderColor = "black";
       }
     }
-  }, []);
+    // eslint-disable-next-line react/destructuring-assignment
+  }, [props.darkMode]);
   const checkAnswer = (ev) => {
     // eslint-disable-next-line no-console
     // eslint-disable-next-line react/prop-types
@@ -107,10 +105,6 @@ function BoardV2(props) {
     return arr;
   };
 
-  // eslint-disable-next-line no-unused-vars
-  function darkMode() {
-    console.log("2");
-  }
   return (
     <div id="grids-cont">
       <PopulateBoard />

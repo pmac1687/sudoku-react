@@ -27,9 +27,12 @@ export default class App extends React.Component {
       // eslint-disable-next-line react/no-unused-state
       hard: false,
       answersShow: false,
-      showMenu: "no-show",
-      showGame: "show",
+      showMenu: "show",
+      showGame: "no-show",
       darkMode: false,
+      seconds: 0,
+      minutes: 0,
+      hours: 0,
     };
     this.showAnswers = this.showAnswers.bind(this);
     this.newGame = this.newGame.bind(this);
@@ -114,21 +117,26 @@ export default class App extends React.Component {
   }
 
   toggleDark() {
+    const sud = document.getElementsByName("sudoku");
+    const timer = document.getElementsByName("timer");
+    const dark = document.getElementsByName("dark");
+    const background = document.getElementsByName("background");
     if (this.state.darkMode) {
       this.setState({ darkMode: false });
       console.log("light");
+      sud[0].style.color = "black";
+      timer[0].style.color = "black";
+      dark[0].style.color = "black";
+      dark[0].innerHTML = "Click For Dark Mode";
+      background[0].style.backgroundColor = "pink";
     } else {
       this.setState({ darkMode: true });
       console.log("dark");
-      const sud = document.getElementsByName("sudoku");
-      const timer = document.getElementsByName("timer");
-      const dark = document.getElementsByName("dark");
-      const background = document.getElementsByName("background");
       console.log(dark[0].style);
       sud[0].style.color = "white";
       timer[0].style.color = "white";
       dark[0].style.color = "white";
-      dark[0].innerHTML = "Light Mode";
+      dark[0].innerHTML = "Click For Light Mode";
       background[0].style.backgroundColor = "black";
     }
   }
@@ -230,7 +238,7 @@ export default class App extends React.Component {
                     <label className="switch">
                       <input onClick={this.toggleDark} type="checkbox" />
                       <span className="slider round" />
-                      <p name="dark">dark mode</p>
+                      <p name="dark">Click For Dark</p>
                     </label>
                   </div>
                 </div>
@@ -239,7 +247,7 @@ export default class App extends React.Component {
                 <div>
                   <div style={{ marginRight: "100px" }}>
                     <h1 name="timer">
-                      {`${this.state.hours} : ${this.state.minutes} : ${this.state.seconds} : ${this.state.centiseconds}`}
+                      {`${this.state.hours} : ${this.state.minutes} : ${this.state.seconds} `}
                     </h1>
                   </div>
                   <form>
