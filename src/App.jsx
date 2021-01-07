@@ -13,6 +13,7 @@ import "./App.css";
 import React, { createRef } from "react";
 import BoardV2 from "./BoardV2";
 import text from "./data";
+import Timer from "./Timer";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -55,27 +56,7 @@ export default class App extends React.Component {
       showMenu: "no-show",
       timerOn: true,
       // eslint-disable-next-line react/no-access-state-in-setstate
-      timerTime: this.state.timerTime,
-      timerStart: Date.now() - this.state.timerTime,
-      seconds: 0,
-      minutes: 0,
-      hours: 0,
     });
-    this.timer = setInterval(() => {
-      const timerTime = Date.now() - this.state.timerStart;
-      const centiseconds = `0${Math.floor(timerTime / 10) % 100}`.slice(-2);
-      const seconds = `0${Math.floor(timerTime / 1000) % 60}`.slice(-2);
-      const minutes = `0${Math.floor(timerTime / 60000) % 60}`.slice(-2);
-      const hours = `0${Math.floor(timerTime / 3600000)}`.slice(-2);
-      this.setState({
-        // eslint-disable-next-line react/no-access-state-in-setstate
-        timerTime,
-        centiseconds,
-        seconds,
-        minutes,
-        hours,
-      });
-    }, 10);
     // eslint-disable-next-line no-console
   }
 
@@ -247,7 +228,7 @@ export default class App extends React.Component {
                 <div>
                   <div style={{ marginRight: "100px" }}>
                     <h1 name="timer">
-                      {`${this.state.hours} : ${this.state.minutes} : ${this.state.seconds} `}
+                      <Timer timerOn={this.state.timerOn} />
                     </h1>
                   </div>
                   <form>

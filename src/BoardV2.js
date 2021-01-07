@@ -10,6 +10,7 @@ import text from "./data";
 function BoardV2(props) {
   // eslint-disable-next-line no-unused-vars
   const [dark, setDark] = useState(false);
+
   useEffect(() => {
     const dMode = props.darkMode;
     console.log(props.darkMode);
