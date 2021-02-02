@@ -134,6 +134,8 @@ input:checked + .slider:before {
   justify-content: center;
   align-self: center;
   width: 50vw;
-  height: 50vh;
+  height: 100vh;
+}
+#form {
   margin-top: 25vh;
 }

@@ -7,16 +7,8 @@ const Timer = (props) => {
     timerOn: PropTypes.bool.isRequired,
   };
   const [seconds, setSeconds] = useState(0);
-  const [isActive, setIsActive] = useState(true);
+  const [isActive] = useState(true);
   const { timerOn } = props;
-  function toggle() {
-    setIsActive(!isActive);
-  }
-
-  function reset() {
-    setSeconds(0);
-    setIsActive(false);
-  }
 
   useEffect(() => {
     Timer.propTypes = {
@@ -40,20 +32,7 @@ const Timer = (props) => {
     // eslint-disable-next-line react/jsx-no-comment-textnodes
     <div className="app">
       <div className="time">{seconds}</div>
-      <div className="row">
-        <button
-          className={`button button-primary button-primary-${
-            isActive ? "active" : "inactive"
-          }`}
-          onClick={toggle}
-          type="button"
-        >
-          {isActive ? "Pause" : "Start"}
-        </button>
-        <button className="button" onClick={reset} type="button">
-          Reset
-        </button>
-      </div>
+      <div className="row" />
     </div>
   );
 };

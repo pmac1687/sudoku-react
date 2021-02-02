@@ -130,7 +130,13 @@ export default class App extends React.Component {
             <div id="menu-cont">
               <div>
                 <form>
-                  <div className="form-group row">
+                  <h1 style={{ margin: "auto", alignSelf: "center" }}>
+                    Sudoku
+                  </h1>
+                  <div
+                    style={{ marginTop: "400px" }}
+                    className="form-group row"
+                  >
                     <div className="col-sm-2">Options</div>
                     <div className="col-sm-10">
                       <div className="form-check">
@@ -163,7 +169,10 @@ export default class App extends React.Component {
                 </form>
               </div>
               <div>
-                <div className="form-check form-check-inline">
+                <div
+                  style={{ marginTop: "500px" }}
+                  className="form-check form-check-inline"
+                >
                   <input
                     className="form-check-input"
                     type="radio"
@@ -231,7 +240,11 @@ export default class App extends React.Component {
                       <Timer timerOn={this.state.timerOn} />
                     </h1>
                   </div>
-                  <form>
+                  <form
+                    style={{
+                      marginLeft: "-25px",
+                    }}
+                  >
                     <div className="form-group row">
                       <div className="col-sm-10">
                         <button
